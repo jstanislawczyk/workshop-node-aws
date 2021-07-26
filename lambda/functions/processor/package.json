@@ -1,0 +1,14 @@
+{
+  "name": "processor",
+  "version": "1.0.0",
+  "description": "Events processor",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jstanislawczyk",
+  "license": "ISC",
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
