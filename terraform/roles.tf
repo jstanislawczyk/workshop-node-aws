@@ -38,6 +38,11 @@ resource "aws_iam_role" "lambda_processor_role" {
 EOF
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_generator_policy_attachment" {
+  role       = aws_iam_role.lambda_generator_role.name
+  policy_arn = aws_iam_policy.lambda_generator_policy.arn
+}
+
 resource "aws_iam_role_policy_attachment" "lambda_processor_policy_attachment" {
   role       = aws_iam_role.lambda_processor_role.name
   policy_arn = aws_iam_policy.lambda_processor_policy.arn

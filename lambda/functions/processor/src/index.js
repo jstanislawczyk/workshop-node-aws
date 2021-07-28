@@ -5,9 +5,9 @@ exports.handler = async function(event) {
     const s3 = new AWS.S3();
     const params = buildParams(event);
 
-    await s3.putObject(params);
+    await s3.putObject(params).promise();
     console.log(`S3 object saved: ${JSON.stringify(params)}`);
-}
+};
 
 const buildParams = (event) => {
     const bucketName = process.env.BUCKET_NAME;
@@ -15,6 +15,6 @@ const buildParams = (event) => {
     return {
         Body: JSON.stringify(event),
         Bucket: bucketName,
-        Key: uuid.v4(),
+        Key: `${uuid.v4()}.json`,
     };
 };
