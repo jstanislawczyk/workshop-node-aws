@@ -32,18 +32,13 @@ resource "aws_iam_role" "lambda_processor_role" {
       },
       "Effect": "Allow",
       "Sid": ""
-    },
-    {
-      "Action": [
-        "s3:PutObject"
-      ],
-      "Effect": "Allow",
-      "Resource": [
-        "${aws_s3_bucket.data_lake.arn}"
-      ],
     }
   ]
 }
 EOF
 }
 
+resource "aws_iam_role_policy_attachment" "lambda_processor_policy_attachment" {
+  role       = aws_iam_role.lambda_processor_role.name
+  policy_arn = aws_iam_policy.lambda_processor_policy.arn
+}
